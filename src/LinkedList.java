@@ -9,51 +9,71 @@ public class LinkedList {
     }
     public Node head;
 
-    public LinkedList insert(LinkedList list, int value){
+    public void insert(int value){
         Node newNode = new Node(value);  //new node to insert
 
         //first check is linked-list is empty, if so then make the head of list the node just created
-        if(list.head == null){
-            list.head = newNode;
-            return list;
+        if(this.head == null){
+            this.head = newNode;
         }
         else {
-            Node temp = list.head;
+            Node temp = this.head;
             while(temp.next != null){ //iterate through the list until next points to null
                 temp = temp.next;  //temp to the next location in the list
             }
             temp.next = newNode;  //at the end of the list insert our node
         }
-        return list;
     }
 
-    public LinkedList remove(LinkedList list, int value){
+    public void remove( int key){
 
         //find previous node of the node to be deleted
         //change the next of the previous node
         //free memory
-        Node temp = list.head;
+        Node temp = this.head;
         Node previous = null;
 
-        if(temp != null && temp.value == value){ //if head ahs the value to delete assign next node as the head
-            list.head = temp.next;
-            return list;
+        if(temp != null && temp.value == key){ //if head has the key to delete assign next node as the head
+            this.head = temp.next;
         }
-
-        while(temp != null && temp.value != value){
+        while(temp != null && temp.value != key){
             previous = temp;
             temp = temp.next;
         }
         if(temp == null){
-            return list;
         }
-
         previous.next = temp.next;
-        return list;
     }
 
-    public String toString(){
+    public int length(LinkedList list){
+        Node temp = list.head;
+        int counter = 0;
 
-        return null;
+        while (temp != null){
+            temp = temp.next;
+            counter++;
+        }
+        return counter;
+    }
+
+    public void printList(LinkedList list) {
+        Node temp = list.head;
+        while (temp != null) {
+            System.out.print(temp.value);
+            temp = temp.next;
+        }
+    }
+
+    public void reverseList(){
+        Node previous = null;
+        Node temp = this.head;
+
+        while(temp != null){
+            Node next = temp.next;
+            temp.next = previous;
+            previous = temp;
+            temp = next;
+        }
+        this.head = previous;
     }
 }
