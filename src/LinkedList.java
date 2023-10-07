@@ -1,13 +1,13 @@
 public class LinkedList {
     static class Node{
-        public int value;
-        public Node next;
+        private int value;
+        private Node next;
         public Node(int value){
             this.value = value;
             this.next = null;
         }
     }
-    public Node head;
+    private Node head;
 
     public void insertNode(int value){
         Node newNode = new Node(value); // node to insert
@@ -21,13 +21,17 @@ public class LinkedList {
         StringBuilder list = new StringBuilder();
         Node temp = this.head;
         while (temp != null) {
-            list.append(Integer.toString(temp.value));
+            list.append(temp.value);
             temp = temp.next;
         }
         return list.toString();
     }
 
-//    public void reverseList(){
+    public Node getHead() {
+        return head;
+    }
+
+    //    public void reverseList(){
 //        Node previous = null;
 //        Node temp = this.head;
 //
