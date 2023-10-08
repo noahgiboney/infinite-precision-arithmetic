@@ -1,20 +1,53 @@
 public class LinkedList {
-    static class Node{
+    static class Node {
         private int value;
         private Node next;
-        public Node(int value){
+
+        public Node(int value) {
             this.value = value;
             this.next = null;
+        }
+
+        public void carry(int value){
+            this.value += value;
+        }
+
+        public Node getNext() {
+            return next;
+        }
+
+        public int getValue() {
+            return value;
         }
     }
     private Node head;
 
-    public void insertNode(int value){
+    public void insertNode(int value) {
         Node newNode = new Node(value); // node to insert
 
         newNode.next = head; //link new node to the current head
 
         this.head = newNode; //make the new node the head of list
+    }
+
+    public void insertTail(int value) {
+        Node newNode = new Node(value);
+
+        if (this.head == null) {
+            this.head = newNode;
+        } else {
+            Node temp = this.head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+
+    public void removeHead() {
+        if (head != null) {
+            this.head = head.next;
+        }
     }
 
     public String toString() {
@@ -30,28 +63,7 @@ public class LinkedList {
     public Node getHead() {
         return head;
     }
-
-    //    public void reverseList(){
-//        Node previous = null;
-//        Node temp = this.head;
-//
-//        while(temp != null){
-//            Node next = temp.next;
-//            temp.next = previous;
-//            previous = temp;
-//            temp = next;
-//        }
-//        this.head = previous;
-//    }
-
-//    public int length(LinkedList list){
-//        Node temp = list.head;
-//        int counter = 0;
-//
-//        while (temp != null){
-//            temp = temp.next;
-//            counter++;
-//        }
-//        return counter;
-//    }
 }
+
+
+
