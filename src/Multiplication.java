@@ -10,14 +10,38 @@ public class Multiplication extends Operation{
         int zeroCounter = 0;
 
         while(listY.getHead() != null){
-            LinkedList.Node temp = listX.getHead();
+            LinkedList.Node temp = listY.getHead();
+            LinkedList current = new LinkedList();
+
             while(temp != null){
-                int result = listY.getHead().getValue() * temp.getValue();
+                int result = listX.getHead().getValue() * temp.getValue();
                 if(result <= 9){
-                    resultList.insertNode(result);
+                    current.insertNode(result);
+                }
+                else{
+                    current.insertNode(result % 10);
+                    if (temp.getNext() == null){
+                        current.insertNode(result / 10);
+                    }
+                    else{
+                        temp.getNext().carry(result / 10);
+                    }
                 }
                 temp = temp.getNext();
             }
+
+            for(int i = 0; i < zeroCounter; i++){
+                current.insertNode(0);
+            }
+
+            if(resultList.getHead() == null){
+                resultList = current;
+            }
+            else {
+                Addition add = new Addition();
+                resultList = add.doOperation(resultList,resultList);
+            }
+            zeroCounter++;
             listY.removeHead();
         }
         return resultList;
