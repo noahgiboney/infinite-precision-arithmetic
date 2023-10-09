@@ -1,8 +1,10 @@
 public class Addition extends Operation{
 
     public Addition( String x, String y ){
-       super(x,y);
+        super(x,y);
     }
+
+    public Addition(){}
 
     @Override
     public LinkedList doOperation(LinkedList listX, LinkedList listY){

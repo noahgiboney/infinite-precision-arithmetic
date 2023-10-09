@@ -18,6 +18,8 @@ public abstract class Operation {
         this.y = bufferY.toString();
     }
 
+    public Operation(){}
+
     public LinkedList fillList(String value){
         LinkedList list = new LinkedList();
 

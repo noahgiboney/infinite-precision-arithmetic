@@ -27,7 +27,10 @@ public class FileProcessor {
                     if(Objects.equals(operator, "*")){
                         Multiplication multiply = new Multiplication(x,y);
                         LinkedList result = multiply.doOperation(multiply.fillList(multiply.getX()), multiply.fillList(multiply.getY()));
-                        System.out.println(multiply.getX() + " + " + multiply.getY() + " = " + result.toString());
+                        System.out.println(multiply.getX() + " * " + multiply.getY() + " = " + result.toString());
+                    }
+                    if(Objects.equals(operator, "^")){
+                        System.out.println();
                     }
             }
         } catch (FileNotFoundException e) {
