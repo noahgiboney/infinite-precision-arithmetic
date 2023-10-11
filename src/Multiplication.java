@@ -8,26 +8,27 @@ public class Multiplication extends Operation{
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {
         LinkedList resultList = new LinkedList();
         int zeroCounter = 0;
+        LinkedList temp;
 
         while(listY.getHead() != null){
-            LinkedList.Node temp = listY.getHead();
+            temp = listX;
             LinkedList current = new LinkedList();
 
-            while(temp != null){
-                int result = listX.getHead().getValue() * temp.getValue();
+            while(temp.getHead() != null){
+                int result = listX.getHead().getValue() * temp.getHead().getValue();
                 if(result <= 9){
                     current.insertNode(result);
                 }
                 else{
                     current.insertNode(result % 10);
-                    if (temp.getNext() == null){
+                    if (temp.getHead().getNext() == null){
                         current.insertNode(result / 10);
                     }
                     else{
-                        temp.getNext().carry(result / 10);
+                        temp.getHead().getNext().carry(result / 10);
                     }
                 }
-                temp = temp.getNext();
+                temp.removeHead();
             }
 
             for(int i = 0; i < zeroCounter; i++){
@@ -39,7 +40,7 @@ public class Multiplication extends Operation{
             }
             else {
                 Addition add = new Addition();
-                resultList = add.doOperation(resultList,resultList);
+                resultList = add.doOperation(resultList,current);
             }
             zeroCounter++;
             listY.removeHead();
