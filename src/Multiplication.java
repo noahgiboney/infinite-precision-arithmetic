@@ -7,14 +7,15 @@ public class Multiplication extends Operation{
     @Override
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {
         LinkedList resultList = new LinkedList();
+        resultList.insertNode(0);
         int zeroCounter = 0;
 
         while(listY.getHead() != null){
-            LinkedList.Node temp = listY.getHead();
+            LinkedList.Node temp = listX.getHead();
             LinkedList current = new LinkedList();
 
             while(temp != null){
-                int result = listX.getHead().getValue() * temp.getValue();
+                int result = listY.getHead().getValue() * temp.getValue();
                 if(result <= 9){
                     current.insertNode(result);
                 }
@@ -29,18 +30,14 @@ public class Multiplication extends Operation{
                 }
                 temp = temp.getNext();
             }
-
             for(int i = 0; i < zeroCounter; i++){
                 current.insertNode(0);
             }
 
-            if(resultList.getHead() == null){
-                resultList = current;
-            }
-            else {
-                Addition add = new Addition();
-                resultList = add.doOperation(resultList,resultList);
-            }
+
+            Addition add = new Addition();
+            resultList = add.doOperation(resultList,current);
+
             zeroCounter++;
             listY.removeHead();
         }
