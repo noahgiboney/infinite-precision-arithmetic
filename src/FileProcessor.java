@@ -42,7 +42,7 @@ public class FileProcessor {
                     LinkedList result = multiply.doOperation(multiply.fillList(multiply.getX()), multiply.fillList(multiply.getY()));
                     System.out.println(multiply.getX() + " * " + multiply.getY() + " = " + result.toString());
                 }
-                if(Objects.equals(operator, "^")){
+                if(Objects.equals(operator, "^")){.
                     System.out.println();
                 }
 
