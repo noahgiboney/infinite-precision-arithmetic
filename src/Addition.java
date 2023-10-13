@@ -16,7 +16,7 @@ public class Addition extends Operation{
                 resultList.insertNode(result); //insert the result to the list if its single digit
             }
             else{
-                resultList.insertNode(result - 10); //insert ones place value to result list if result is double digit
+                resultList.insertNode(result % 10); //insert ones place value to result list if result is double digit
                 if(listX.getHead().getNext() == null){
                     listX.insertTail(result / 10); //if the head of list x does not point to anything, then we can insert tens value to the tail of the list
                 }
