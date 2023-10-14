@@ -5,13 +5,15 @@ public class Exponential extends Operation {
 
     @Override
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {
-        int power = Integer.parseInt(listY.toString());
+        listY.reverse(); // reverse so listY is parsed correctly "05" -> "50"
+        int power = Integer.parseInt(listY.toString()); //parse listY into an int to do algo
         return expBySquaring(listX, power);
     }
 
     public LinkedList expBySquaring(LinkedList listX, int power) {
-        Multiplication mult = new Multiplication();
+        Multiplication mult = new Multiplication(); //object to do multiplication
 
+        //exponential squaring algo
         if (power == 0) {
             LinkedList one = new LinkedList();
             one.insertNode(1);

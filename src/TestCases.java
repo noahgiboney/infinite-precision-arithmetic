@@ -68,6 +68,14 @@ public class TestCases {
     }
 
     @Test
+    public void testDoAddition4() {
+        Addition add = new Addition("505543243252345342534252345342532453425", "0578439025784392075893420758920347589023748593");
+        String result = "578439531327635328238763293172692931556202018";
+        LinkedList test = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
+        assertEquals(result, test.toString());
+    }
+
+    @Test
     public void testMultiplication1() {
         Multiplication mul = new Multiplication("00067561", "0000041235235");
         String result = "2785893711835";
@@ -102,7 +110,7 @@ public class TestCases {
 
     @Test
     public void testExponential2(){
-        Exponential exp = new Exponential("644", "33");
+        Exponential exp = new Exponential("644", "30");
         String result = "1847464154765782832947034301721585703011476221186478059011220461413625389277329227776";
         LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
         assertEquals(result, test.toString());
