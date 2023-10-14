@@ -62,7 +62,7 @@ public class TestCases {
 
     @Test
     public void testMultiplciation2() {
-        Multiplication mul = new Multiplication("0", "5");
+        Multiplication mul = new Multiplication("0", "50");
         String result = "0";
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
         assertEquals(result, test.toString());
