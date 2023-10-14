@@ -7,11 +7,12 @@ public abstract class Operation {
         StringBuilder bufferY = new StringBuilder(y);
 
         int indexX = 0;
-        while(bufferX.charAt(indexX) == '0'){
+        while(bufferX.length() > 0 && bufferX.charAt(indexX) == '0'){
             bufferX.deleteCharAt(indexX);
         }
+
         int indexY = 0;
-        while(bufferY.charAt(indexY) == '0'){
+        while(bufferY.length() > 0 && bufferY.charAt(indexY) == '0'){
             bufferY.deleteCharAt(indexY);
         }
         this.x = bufferX.toString();
