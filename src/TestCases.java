@@ -99,6 +99,14 @@ public class TestCases {
         LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
         assertEquals(result, test.toString());
     }
+
+    @Test
+    public void testExponential2(){
+        Exponential exp = new Exponential("644", "3");
+        String result = "267089984";
+        LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
+        assertEquals(result, test.toString());
+    }
 }
 
 
