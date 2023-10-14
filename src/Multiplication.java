@@ -5,6 +5,7 @@ public class Multiplication extends Operation {
     public Multiplication(String x, String y) {
         super(x, y);
     }
+    public Multiplication(){}
 
     @Override
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {

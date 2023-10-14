@@ -1,20 +1,33 @@
-import javax.xml.transform.Result;
-
-public class Exponential extends Operation{
-    public Exponential(String x, String y){
-        super(x,y);
+public class Exponential extends Operation {
+    public Exponential(String x, String y) {
+        super(x, y);
     }
-    public Exponential(){}
 
     @Override
-    public LinkedList doOperation(LinkedList listX, LinkedList listY){
-        LinkedList resultList = new LinkedList();
+    public LinkedList doOperation(LinkedList listX, LinkedList listY) {
         int power = Integer.parseInt(listY.toString());
+        return expBySquaring(listX, power);
+    }
 
-        if (power == 0){
-            resultList.insertNode(1);
-            return  resultList;
+    public LinkedList expBySquaring(LinkedList listX, int power) {
+        Multiplication mult = new Multiplication();
+
+        if (power == 0) {
+            LinkedList one = new LinkedList();
+            one.insertNode(1);
+            return one;
         }
-        return resultList;
+        else if (power % 2 == 0) {
+            LinkedList squared = mult.doOperation(listX, listX);
+            squared.reverse(); // To keep it in LSD
+            return expBySquaring(squared, power / 2);
+        }
+        else {
+            LinkedList squaredX = mult.doOperation(listX, listX);
+            squaredX.reverse();
+            LinkedList result = expBySquaring(squaredX, (power - 1) / 2);
+            result.reverse();
+            return mult.doOperation(listX, result);
+        }
     }
 }
