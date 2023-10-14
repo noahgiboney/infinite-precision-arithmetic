@@ -83,6 +83,14 @@ public class TestCases {
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
         assertEquals(result, test.toString());
     }
+
+    @Test
+    public void testMultiplication3() {
+        Multiplication mul = new Multiplication("0", "0");
+        String result = "0";
+        LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
+        assertEquals(result, test.toString());
+    }
 }
 
 

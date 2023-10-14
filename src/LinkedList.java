@@ -60,11 +60,7 @@ public class LinkedList {
         return list.toString();
     }
 
-    public Node getHead() {
-        return head;
-    }
-
-    public void reverseList(){
+    public void reverse(){
         Node previous = null;
         Node temp = this.head;
 
@@ -76,6 +72,11 @@ public class LinkedList {
         }
         this.head = previous;
     }
+
+    public Node getHead() {
+        return head;
+    }
+
 }
 
 

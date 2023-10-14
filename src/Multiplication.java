@@ -41,11 +41,11 @@ public class Multiplication extends Operation {
             if (resultList.getHead() == null) {
                 resultList = temp;
                 if(iterY.getNext() == null){
-                    resultList.reverseList();
+                    resultList.reverse();
                 }
             } else {
                 if(zeroCounter > 1){
-                    resultList.reverseList();
+                    resultList.reverse();
                 }
                 Addition add = new Addition();
                 resultList = add.doOperation(resultList, temp);
