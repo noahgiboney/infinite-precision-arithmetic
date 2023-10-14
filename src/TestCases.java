@@ -48,16 +48,16 @@ public class TestCases {
         Addition add = new Addition("51","00000000077123");
         String result = "77174";
         LinkedList test = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
-
         assertEquals(result,test.toString());
     }
 
     @Test
     public void testMultiplciation(){
-        Multiplication mul = new Multiplication("10","20");
-        String result = "200";
-        LinkedList test = mul.doOperation((mul.fillList(mul.getX())), mul.fillList(mul.getY()));
-        assertEquals(result, test.toString());
+        Multiplication mul = new Multiplication("00067561","0000041235235");
+            String result = "2785893711835";
+            LinkedList test = mul.doOperation(mul.fillList(mul.getX()),mul.fillList(mul.getY()));
+            assertEquals(result, test.toString());
+        }
     }
-}
+
 
