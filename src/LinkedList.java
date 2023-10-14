@@ -76,7 +76,6 @@ public class LinkedList {
     public Node getHead() {
         return head;
     }
-
 }
 
 

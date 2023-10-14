@@ -31,20 +31,21 @@ public class FileProcessor {
                     continue;
                 }
 
-                //carry out operation and output it depending on operator
+                //carry out operation and output depending on operator
                 if(Objects.equals(operator, "+")){
                     Addition add = new Addition(x,y);
                     LinkedList result = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
                     System.out.println(add.getX() + " + " + add.getY() + " = " + result.toString());
                 }
                 if(Objects.equals(operator, "*")){
-                    LinkedList result = new LinkedList();
-                    Multiplication multiply = new Multiplication(x,y);
-                    result = multiply.doOperation(multiply.fillList(multiply.getX()), multiply.fillList(multiply.getY()));
-                    System.out.println(multiply.getX() + " * " + multiply.getY() + " = " + result.toString());
+                    Multiplication mult = new Multiplication(x,y);
+                    LinkedList result = mult.doOperation(mult.fillList(mult.getX()), mult.fillList(mult.getY()));
+                    System.out.println(mult.getX() + " * " + mult.getY() + " = " + result.toString());
                 }
                 if(Objects.equals(operator, "^")){
-                    System.out.println();
+                    Exponential exp = new Exponential(x,y);
+                    LinkedList result = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
+                    System.out.println(exp.getX() + " ^ " + exp.getY() + " = " + result.toString());
                 }
 
             }
