@@ -91,6 +91,14 @@ public class TestCases {
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
         assertEquals(result, test.toString());
     }
+
+    @Test
+    public void testExponential1(){
+        Exponential exp = new Exponential("64", "0");
+        String result = "1";
+        LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
+        assertEquals(result, test.toString());
+    }
 }
 
 
