@@ -45,8 +45,8 @@ public class TestCases {
 
     @Test
     public void testDoAddition1(){
-        Addition add = new Addition("00009999993","00000000077123");
-        String result = "10077116";
+        Addition add = new Addition("51","00000000077123");
+        String result = "77174";
         LinkedList test = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
 
         assertEquals(result,test.toString());

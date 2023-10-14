@@ -63,7 +63,19 @@ public class LinkedList {
     public Node getHead() {
         return head;
     }
-}
 
+    public void reverseList(){
+        Node previous = null;
+        Node temp = this.head;
+
+        while(temp != null){
+            Node next = temp.next;
+            temp.next = previous;
+            previous = temp;
+            temp = next;
+        }
+        this.head = previous;
+    }
+}
 
 

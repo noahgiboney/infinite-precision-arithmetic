@@ -7,26 +7,12 @@ public class BigNumArithmetic {
      * @param args Command line arguments. Should have exactly one argument: a file name.
      */
     public static void main(String[] args) {
-//        if (args.length != 1) {
-//            throw new IllegalArgumentException(
-//                    "Expected exactly 1 argument: a file name.");
-//        }
-//        String filePath = args[0];
-//        FileProcessor.processFile(filePath);
-
-        String test = "5000";
-        Exponential exp = new Exponential();
-        LinkedList list = exp.fillList(test);
-
-
-        System.out.println(list.toString());
-
-
-
-
-
+        if (args.length != 1) {
+            throw new IllegalArgumentException(
+                    "Expected exactly 1 argument: a file name.");
+        }
+        String filePath = args[0];
+        FileProcessor.processFile(filePath);
     }
-
-
 }
 

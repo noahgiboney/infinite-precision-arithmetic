@@ -1,7 +1,7 @@
-public class Multiplication extends Operation{
+public class Multiplication extends Operation {
 
-    public Multiplication(String x, String y){
-        super(x,y);
+    public Multiplication(String x, String y) {
+        super(x, y);
     }
 
     @Override
@@ -9,36 +9,45 @@ public class Multiplication extends Operation{
         LinkedList resultList = new LinkedList();
         int zeroCounter = 0;
 
-        while(listY.getHead() != null) {
-            LinkedList temp = listX;
-            LinkedList current = new LinkedList();
+        LinkedList.Node iterY = listY.getHead();
+        while (iterY != null) {
+            LinkedList temp = new LinkedList();
+            LinkedList.Node iterX = listX.getHead();
             int carry = 0;
 
-            while(temp.getHead() != null){
-                int result = (listY.getHead().getValue() * temp.getHead().getValue()) + carry;
+            // Multiply and add each digit
+            while (iterX != null) {
+                int result = (iterY.getValue() * iterX.getValue()) + carry;
                 carry = result / 10;
-                current.insertNode(result % 10);
-                temp.removeHead();
+                temp.insertTail(result % 10);
+                iterX = iterX.getNext();
             }
 
-            if(carry > 0){
-                current.insertNode(carry / 10);
+            // Add remaining carry
+            if (carry > 0) {
+                temp.insertTail(carry);
             }
 
-            for(int i = 1; i < zeroCounter; i++){
-                current.insertNode(0);
+            // Add zeros for each position after the first
+            for (int i = 0; i < zeroCounter; i++) {
+                temp.insertNode(0);
             }
 
+            // Add the calculated line to the total result
             if (resultList.getHead() == null) {
-                resultList = current;
-            }
-            else {
+                resultList = temp;
+                if(iterY.getNext() == null){
+                    resultList.reverseList();
+                }
+            } else {
                 Addition add = new Addition();
-                resultList = add.doOperation(resultList, current);
+                resultList = add.doOperation(resultList, temp);
             }
-            listY.removeHead();
+
+            // Move to next digit in Y
+            iterY = iterY.getNext();
             zeroCounter++;
         }
-        return  resultList;
+        return resultList;
     }
 }

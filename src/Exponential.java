@@ -1,6 +1,6 @@
 public class Exponential extends Operation{
     public Exponential(String x, String y){
-        super()
+        super(x,y);
     }
     public Exponential(){}
 
