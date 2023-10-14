@@ -22,10 +22,10 @@ public class FileProcessor {
                     continue;
                 }
 
-                String[] divide = line.split("\\s+"); //split up string into the three components
-                String x = divide[0];
-                String operator = divide[1];
-                String y = divide[2];
+                String[] divide = line.split("\\s+"); //split up string into the three components and remove white space
+                String x = divide[0].trim();
+                String operator = divide[1].trim();
+                String y = divide[2].trim();
 
                 if(!(isValidOperand(x)) || !(isValidOperator(operator)) || !(isValidOperand(y))){ //make sure x, y, and operators are valid, skip if not
                     continue;

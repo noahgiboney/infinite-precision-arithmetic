@@ -19,7 +19,7 @@ public class TestCases {
     public void testIsValidOperand() {
         assertFalse(FileProcessor.isValidOperand("00003333hhh-"));
         assertTrue(FileProcessor.isValidOperand("500000"));
-        assertTrue(FileProcessor.isValidOperand("00000001"));
+        assertTrue(FileProcessor.isValidOperand("0000000"));
     }
 
     @Test
