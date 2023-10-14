@@ -52,7 +52,23 @@ public class TestCases {
     }
 
     @Test
-    public void testMultiplciation1() {
+    public void testDoAddition2() {
+        Addition add = new Addition("0", "00000000077123");
+        String result = "77123";
+        LinkedList test = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
+        assertEquals(result, test.toString());
+    }
+
+    @Test
+    public void testDoAddition3() {
+        Addition add = new Addition("0", "0");
+        String result = "0";
+        LinkedList test = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
+        assertEquals(result, test.toString());
+    }
+
+    @Test
+    public void testMultiplication1() {
         Multiplication mul = new Multiplication("00067561", "0000041235235");
         String result = "2785893711835";
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
@@ -61,7 +77,7 @@ public class TestCases {
 
 
     @Test
-    public void testMultiplciation2() {
+    public void testMultiplication2() {
         Multiplication mul = new Multiplication("0", "50");
         String result = "0";
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
