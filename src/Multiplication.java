@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Multiplication extends Operation {
 
     public Multiplication(String x, String y) {
@@ -7,6 +9,12 @@ public class Multiplication extends Operation {
     @Override
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {
         LinkedList resultList = new LinkedList();
+
+        if (Objects.equals(listX.toString(), "0") || Objects.equals(listY.toString(), "0")) {
+            resultList.insertNode(0);
+            return resultList;
+        }
+
         int zeroCounter = 0;
 
         LinkedList.Node iterY = listY.getHead();

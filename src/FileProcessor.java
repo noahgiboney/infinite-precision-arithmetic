@@ -40,11 +40,7 @@ public class FileProcessor {
                 if(Objects.equals(operator, "*")){
                     LinkedList result = new LinkedList();
                     Multiplication multiply = new Multiplication(x,y);
-                    if(multiply.getX() == "0" || multiply.getY() == "0"){
-                        result.insertNode(0);
-                    }
-                    LinkedList result = multiply.doOperation(multiply.fillList(multiply.getX()), multiply.fillList(multiply.getY()));
-
+                    result = multiply.doOperation(multiply.fillList(multiply.getX()), multiply.fillList(multiply.getY()));
                     System.out.println(multiply.getX() + " * " + multiply.getY() + " = " + result.toString());
                 }
                 if(Objects.equals(operator, "^")){
