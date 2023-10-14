@@ -11,37 +11,43 @@ public class Multiplication extends Operation {
     public LinkedList doOperation(LinkedList listX, LinkedList listY) {
         LinkedList resultList = new LinkedList();
 
+        //if either of lists are zero just return zero
         if (Objects.equals(listX.toString(), "0") || Objects.equals(listY.toString(), "0")) {
             resultList.insertNode(0);
             return resultList;
         }
 
-        int zeroCounter = 0;
+        int zeroCounter = 0; //tracker for how many zeros to insert to list
 
-        LinkedList.Node iterY = listY.getHead();
-        while (iterY != null) {
-            LinkedList temp = new LinkedList();
-            LinkedList.Node iterX = listX.getHead();
+        //iterate through listY using a node
+        LinkedList.Node tempY = listY.getHead();
+        while (tempY != null) {
+            LinkedList current = new LinkedList(); //store result of current multiplication in a new list
+            LinkedList.Node tempX = listX.getHead();
             int carry = 0;
 
-            while (iterX != null) {
-                int result = (iterY.getValue() * iterX.getValue()) + carry;
+            //iterate through listX using a node
+            while (tempX != null) {
+                int result = (tempY.getValue() * tempX.getValue()) + carry; //store result plus carry
                 carry = result / 10;
-                temp.insertTail(result % 10);
-                iterX = iterX.getNext();
+                current.insertTail(result % 10); //insert ones digit
+                tempX = tempX.getNext();
             }
 
+            //if there is carry then insert
             if (carry > 0) {
-                temp.insertTail(carry);
+                current.insertTail(carry);
             }
 
+            //add zeros to list based on tracker
             for (int i = 0; i < zeroCounter; i++) {
-                temp.insertNode(0);
+                current.insertNode(0);
             }
 
+            //add current list to result list
             if (resultList.getHead() == null) {
-                resultList = temp;
-                if(iterY.getNext() == null){
+                resultList = current;
+                if(tempY.getNext() == null){
                     resultList.reverse();
                 }
             } else {
@@ -49,10 +55,10 @@ public class Multiplication extends Operation {
                     resultList.reverse();
                 }
                 Addition add = new Addition();
-                resultList = add.doOperation(resultList, temp);
+                resultList = add.doOperation(resultList, current);
             }
 
-            iterY = iterY.getNext();
+            tempY = tempY.getNext(); //move listY to the next node
             zeroCounter++;
         }
         return resultList;

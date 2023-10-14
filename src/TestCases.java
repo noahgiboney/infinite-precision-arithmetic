@@ -102,8 +102,16 @@ public class TestCases {
 
     @Test
     public void testExponential2(){
-        Exponential exp = new Exponential("644", "3");
-        String result = "267089984";
+        Exponential exp = new Exponential("644", "33");
+        String result = "1847464154765782832947034301721585703011476221186478059011220461413625389277329227776";
+        LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
+        assertEquals(result, test.toString());
+    }
+
+    @Test
+    public void testExponential3(){
+        Exponential exp = new Exponential("600", "50");
+        String result = "8082812774647640606431396004565362933760000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
         LinkedList test = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
         assertEquals(result, test.toString());
     }
