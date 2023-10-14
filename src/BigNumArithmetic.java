@@ -14,19 +14,17 @@ public class BigNumArithmetic {
 //        String filePath = args[0];
 //        FileProcessor.processFile(filePath);
 
-        Addition add = new Addition();
+        String test = "5000";
+        Exponential exp = new Exponential();
+        LinkedList list = exp.fillList(test);
 
-        LinkedList x = new LinkedList();
-        x.insertNode(6);
-        x.insertNode(2);
 
-        LinkedList y = new LinkedList();
-        y.insertNode(2);
-        y.insertNode(4);
-        y.insertNode(8);
-        y.insertNode(0);
+        System.out.println(list.toString());
 
-        System.out.println(add.doOperation(x,y).toString());
+
+
+
+
     }
 
 

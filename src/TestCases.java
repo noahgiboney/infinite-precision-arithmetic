@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -51,8 +53,11 @@ public class TestCases {
     }
 
     @Test
-    public void testDoAddition2(){
-
+    public void testMultiplciation(){
+        Multiplication mul = new Multiplication("10","20");
+        String result = "200";
+        LinkedList test = mul.doOperation((mul.fillList(mul.getX())), mul.fillList(mul.getY()));
+        assertEquals(result, test.toString());
     }
 }
 

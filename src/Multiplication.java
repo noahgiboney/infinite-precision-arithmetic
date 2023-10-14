@@ -18,28 +18,27 @@ public class Multiplication extends Operation{
                 int result = (listY.getHead().getValue() * temp.getHead().getValue()) + carry;
                 carry = result / 10;
                 current.insertNode(result % 10);
-
                 temp.removeHead();
             }
 
             if(carry > 0){
-                current.insertNode(0);
+                current.insertNode(carry / 10);
             }
 
             for(int i = 1; i < zeroCounter; i++){
                 current.insertNode(0);
             }
 
-            listY.removeHead();
-            zeroCounter++;
-
             if (resultList.getHead() == null) {
                 resultList = current;
-            } else {
+            }
+            else {
                 Addition add = new Addition();
                 resultList = add.doOperation(resultList, current);
             }
+            listY.removeHead();
+            zeroCounter++;
         }
-        return resultList;
+        return  resultList;
     }
 }
