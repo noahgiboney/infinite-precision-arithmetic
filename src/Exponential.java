@@ -10,7 +10,7 @@ public class Exponential extends Operation {
         return expBySquaring(listX, power);
     }
 
-    public LinkedList expBySquaring(LinkedList listX, int power) {
+    private LinkedList expBySquaring(LinkedList listX, int power) {
         Multiplication mult = new Multiplication(); //object to do multiplication
 
         //exponential squaring algo
