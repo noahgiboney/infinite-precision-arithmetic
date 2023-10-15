@@ -18,11 +18,12 @@ public class FileProcessor {
             while(scan.hasNext()){
                 String line = scan.nextLine(); //grab the whole line
 
-                if(!(isValidLine(line))){ //skip if it not valid
+                String[] divide = line.split("\\s+"); //split up string into the three components and remove white space
+
+                if(!(isValidLine(divide))){ //skip if it not valid
                     continue;
                 }
 
-                String[] divide = line.split("\\s+"); //split up string into the three components and remove white space
                 String x = divide[0].trim();
                 String operator = divide[1].trim();
                 String y = divide[2].trim();
@@ -54,14 +55,8 @@ public class FileProcessor {
         }
     }
 
-    public static boolean isValidLine(String line){
-        int counter = 0;
-        for(int i = 0; i < line.length(); i++){
-            if (Character.isWhitespace(line.charAt(i))){
-                counter++;
-            }
-        }
-        return counter == 2;
+    public static boolean isValidLine(String[] line){
+        return line.length == 3; //line is valid if its length is three
     }
 
     public static boolean isValidOperand(String operand){
@@ -70,10 +65,10 @@ public class FileProcessor {
                 return false;
             }
         }
-        return true;
+        return true; //operand is valid if all chars at i are digits
     }
 
     public static boolean isValidOperator(String operator){
-        return Objects.equals(operator, "+") || Objects.equals(operator, "*") || Objects.equals(operator, "^");
+        return Objects.equals(operator, "+") || Objects.equals(operator, "*") || Objects.equals(operator, "^"); //operator is valid is its * ^ +
     }
 }
