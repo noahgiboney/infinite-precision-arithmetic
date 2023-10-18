@@ -16,7 +16,7 @@ public class FileProcessor {
 
         try (Scanner scan = new Scanner(infile)) {
             while(scan.hasNext()){
-                String line = scan.nextLine(); //grab the whole line
+                String line = scan.nextLine().trim(); //grab the whole line and trim white space
 
                 String[] divide = line.split("\\s+"); //split up string into the three components and remove white space
 
@@ -24,9 +24,9 @@ public class FileProcessor {
                     continue;
                 }
 
-                String x = divide[0].trim();
-                String operator = divide[1].trim();
-                String y = divide[2].trim();
+                String x = divide[0];
+                String operator = divide[1];
+                String y = divide[2];
 
                 if(!(isValidOperand(x)) || !(isValidOperator(operator)) || !(isValidOperand(y))){ //make sure x, y, and operators are valid, skip if not
                     continue;
