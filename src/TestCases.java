@@ -9,7 +9,12 @@ public class TestCases {
 
     @Test
     public void testIsValidLine(){
-        assertTrue(FileProcessor.isValidLine());
+        String[] test1 = {"5", "+", "5"};
+        String[] test2 = {"5", "+", "0", "5"};
+        String[] test3 = {"5", "+"};
+        assertTrue(FileProcessor.isValidLine(test1));
+        assertFalse(FileProcessor.isValidLine(test2));
+        assertFalse(FileProcessor.isValidLine(test3));
     }
 
     @Test
@@ -93,6 +98,14 @@ public class TestCases {
     public void testMultiplication3() {
         Multiplication mul = new Multiplication("0", "0");
         String result = "0";
+        LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
+        assertEquals(result, test.toString());
+    }
+
+    @Test
+    public void testMultiplication4() {
+        Multiplication mul = new Multiplication("3", "00000000000005");
+        String result = "15";
         LinkedList test = mul.doOperation(mul.fillList(mul.getX()), mul.fillList(mul.getY()));
         assertEquals(result, test.toString());
     }
