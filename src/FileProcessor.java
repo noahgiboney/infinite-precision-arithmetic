@@ -12,17 +12,21 @@ public class FileProcessor {
      */
     public static void processFile(String filePath) {
         File infile = new File(filePath);
-
+        int counter = 0;
         try (Scanner scan = new Scanner(infile)) {
             while(scan.hasNext()){
                 String line = scan.nextLine().trim(); //grab the whole line and trim white space
 
                 String[] divide = line.split("\\s+"); //split up string into the three components and remove white space
 
-                if(!(isValidLine(divide))){ //skip if it not valid
+                if(!(isValidLine(divide))) { //skip if it not valid
                     continue;
                 }
+                if(counter >= 1) { //if we are not on the first line of input, we can move down to the next line
+                    System.out.println();
+                }
 
+                //get the operators and operands
                 String x = divide[0];
                 String operator = divide[1];
                 String y = divide[2];
@@ -35,19 +39,19 @@ public class FileProcessor {
                 if(Objects.equals(operator, "+")){
                     Addition add = new Addition(x,y);
                     LinkedList result = add.doOperation(add.fillList(add.getX()), add.fillList(add.getY()));
-                    System.out.println(add.getX() + " + " + add.getY() + " = " + result.toString());
+                    System.out.print(add.getX() + " + " + add.getY() + " = " + result.toString());
                 }
                 if(Objects.equals(operator, "*")){
                     Multiplication mult = new Multiplication(x,y);
                     LinkedList result = mult.doOperation(mult.fillList(mult.getX()), mult.fillList(mult.getY()));
-                    System.out.println(mult.getX() + " * " + mult.getY() + " = " + result.toString());
+                    System.out.print(mult.getX() + " * " + mult.getY() + " = " + result.toString());
                 }
                 if(Objects.equals(operator, "^")){
                     Exponential exp = new Exponential(x,y);
                     LinkedList result = exp.doOperation(exp.fillList(exp.getX()), exp.fillList(exp.getY()));
-                    System.out.println(exp.getX() + " ^ " + exp.getY() + " = " + result.toString());
+                    System.out.print(exp.getX() + " ^ " + exp.getY() + " = " + result.toString());
                 }
-
+                counter++;
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + infile.getPath());
