@@ -33,7 +33,7 @@ public class TestCases {
     }
 
     @Test
-    public void testLinkedList() {
+    public void testLinkedList1() {
         LinkedList list = new LinkedList();
         list.insertNode(1);
         list.insertNode(2);
@@ -41,8 +41,33 @@ public class TestCases {
         list.insertNode(4);
         list.insertNode(4);
         list.insertNode(7);
-
         assertEquals("744321", list.toString());
+    }
+
+    @Test
+    public void testLinkedList2() {
+        LinkedList list = new LinkedList();
+        list.insertNode(1);
+        list.removeHead();
+        list.insertNode(2);
+        list.insertNode(3);
+        list.insertNode(4);
+        list.insertNode(4);
+        list.insertTail(7);
+        assertEquals("44327", list.toString());
+    }
+
+    @Test
+    public void testLinkedList3() {
+        LinkedList list = new LinkedList();
+        list.insertNode(6);
+        list.insertNode(5);
+        list.insertNode(4);
+        list.insertNode(3);
+        list.insertNode(2);
+        list.insertNode(1);
+        list.reverse();
+        assertEquals("654321", list.toString());
     }
 
     @Test
